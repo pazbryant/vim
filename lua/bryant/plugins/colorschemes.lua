@@ -1,39 +1,20 @@
 return {
 	{
-		'Mofiqul/vscode.nvim',
-		config = function()
-			require('vscode').setup({
-				transparent = false,
-				italic_comments = false,
-			})
-			vim.cmd.colorscheme('vscode')
-		end,
-	},
-
-	{
+		'RRethy/base16-nvim',
 		lazy = false,
 		priority = 1000,
-		'rose-pine/neovim',
 		config = function()
-			require('rose-pine').setup({
-				styles = {
-					bold = true,
-					italic = false,
-					transparency = false,
-				},
+			require('base16-colorscheme').with_config({
+				telescope = true,
+				indentblankline = true,
+				notify = true,
+				ts_rainbow = true,
+				cmp = true,
+				illuminate = true,
+				dapui = true,
 			})
-			vim.cmd.colorscheme('rose-pine-moon')
-		end,
-	},
 
-	{
-		'rebelot/kanagawa.nvim',
-		config = function()
-			require('kanagawa').setup({
-				commentStyle = { italic = false },
-				keywordStyle = { italic = false },
-			})
-			vim.cmd.colorscheme('kanagawa')
+			vim.cmd('colorscheme base16-monokai')
 		end,
 	},
 }
