@@ -1,30 +1,50 @@
 return {
 	'folke/flash.nvim',
-	lazy = false,
+	lazy = 'VeryLazy',
 	opts = {
 		search = {
 			multi_window = false,
 		},
 		label = {
 			style = 'overlay', ---@type "eol" | "overlay" | "right_align" | "inline"
+
+			rainbow = {
+				enabled = true,
+				-- number between 1 and 9
+				shade = 9,
+			},
+		},
+		jump = {
+			autojump = true,
 		},
 		highlight = {
 			backdrop = true,
-			matches = true,
+			matches = false,
 			priority = 5000,
-			groups = {
-				match = 'FlashMatch',
-				current = 'FlashCurrent',
-				backdrop = 'FlashBackdrop',
-				label = 'FlashLabel',
-			},
 		},
 		modes = {
 			char = {
 				enabled = true,
-				autohide = true,
 				jump_labels = true,
+				multi_line = true,
+				keys = { 'f', 'F', 't', 'T', [';'] = ':', ',' },
+				char_actions = function(motion)
+					return {
+						[';'] = 'next', -- set to `right` to always go right
+						[','] = 'prev', -- set to `left` to always go left
+						-- clever-f style
+						[motion:lower()] = 'next',
+						[motion:upper()] = 'prev',
+					}
+				end,
 				highlight = { backdrop = true },
+			},
+			treesitter = {
+				jump = { pos = 'range', autojump = true },
+				highlight = {
+					backdrop = true,
+					matches = false,
+				},
 			},
 		},
 	},

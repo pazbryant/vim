@@ -42,3 +42,11 @@ map('n', '<leader>cp', "<cmd>lua vim.notify(vim.fn.expand('%:p'))<cr>", { desc =
 -- quick fix list
 map('n', '<c-k>', "<cmd>cnext<cr>", { desc = "Quick fix list cnext" })
 map('n', '<c-j>', "<cmd>cprevious<cr>", { desc = "Quick fix list cprevious" })
+
+-- swap maps
+map({'n',"v"}, ';', ':', { desc = "Enter Command Mode" })
+map({'n',"v"}, ':', ';', { desc = "Repeat last f/t/F/T search" })
+
+-- already existing binds
+map('n', 'ZQ', ':q!<CR>', { desc = 'Quit without saving' })
+map('n', 'ZZ', ':wq<CR>', { desc = 'Save and quit' })
